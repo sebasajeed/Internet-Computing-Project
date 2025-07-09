@@ -1,0 +1,20 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-colour: #f2f2f2;
+}
+
+input, button {
+    margin: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
