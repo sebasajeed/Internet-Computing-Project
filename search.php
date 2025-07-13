@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Prepared statement
     $stmt = $conn->prepare("SELECT * FROM ProductTable WHERE ProductID = ?");
     $stmt->bind_param("i", $productID);
     $stmt->execute();

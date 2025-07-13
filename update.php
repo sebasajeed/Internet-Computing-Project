@@ -6,13 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newQuantity = $_POST['quantity'];
     $newStatus = $_POST['status'];
 
-    // Validation
     if (!is_numeric($productID) || !is_numeric($newQuantity) || strlen($newStatus) !== 1) {
         echo "Invalid input. Please check the form.";
         exit();
     }
 
-    // Prepare the UPDATE statement
     $stmt = $conn->prepare("UPDATE ProductTable SET Quantity = ?, Status = ? WHERE ProductID = ?");
     $stmt->bind_param("isi", $newQuantity, $newStatus, $productID);
 
