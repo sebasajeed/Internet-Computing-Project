@@ -1,10 +1,11 @@
 <?php
 require 'db_config.php';
 
-// Load full inventory
+// Load full inventory and sort by ProductID
 $query = "SELECT p.ProductEntryID, p.ProductID, p.ProductName, p.Description, p.Quantity, p.Price, p.Status, s.SupplierName 
           FROM ProductTable p
-          JOIN SupplierTable s ON p.SupplierID = s.SupplierID";
+          JOIN SupplierTable s ON p.SupplierID = s.SupplierID
+          ORDER BY p.ProductID";
 $result = $conn->query($query);
 ?>
 
@@ -28,7 +29,6 @@ $result = $conn->query($query);
 
 <h2>Inventory Management</h2>
 
-<!-- 🔍 Search/Delete Section -->
 <div class="form-section">
     <form method="POST" action="search.php" style="display:inline;">
         <input type="number" name="product_id" placeholder="Enter Product ID" required>
@@ -41,7 +41,6 @@ $result = $conn->query($query);
     </form>
 </div>
 
-<!-- 📝 Update Section -->
 <div class="form-section">
     <form method="POST" action="update.php">
         <input type="number" name="product_id" placeholder="Product ID to update" required>
@@ -56,7 +55,6 @@ $result = $conn->query($query);
     </form>
 </div>
 
-<!-- 📦 Inventory Table -->
 <table>
     <tr>
         <th>Entry ID</th>

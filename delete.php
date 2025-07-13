@@ -4,13 +4,12 @@ require 'db_config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $productID = $_POST['product_id'];
 
-    // Check if input is a number
+    // Check if input is a number it should be numeric
     if (!is_numeric($productID)) {
         echo "Invalid Product ID.";
         exit();
     }
 
-    // Prepare the DELETE statement
     $stmt = $conn->prepare("DELETE FROM ProductTable WHERE ProductID = ?");
     $stmt->bind_param("i", $productID);
 
